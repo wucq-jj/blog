@@ -14,31 +14,32 @@ export default hopeTheme({
 
   logo: "/logo.svg",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  // repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "wucq-jj/blog",
 
   docsDir: "demo/theme-docs/src",
 
   locales: {
-    "/": {
-      // navbar
-      navbar: enNavbar,
+    // "/": {
+    //   // navbar
+    //   navbar: enNavbar,
 
-      // sidebar
-      sidebar: enSidebar,
+    //   // sidebar
+    //   sidebar: enSidebar,
 
-      footer: "Default footer",
+    //   footer: "Default footer",
 
-      displayFooter: true,
+    //   displayFooter: true,
 
-      metaLocales: {
-        editLink: "Edit this page on GitHub",
-      },
-    },
+    //   metaLocales: {
+    //     editLink: "Edit this page on GitHub",
+    //   },
+    // },
 
     /**
      * Chinese locale config
      */
-    "/zh/": {
+    "/": {
       // navbar
       navbar: zhNavbar,
 

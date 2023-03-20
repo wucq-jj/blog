@@ -3,15 +3,19 @@ home: true
 icon: home
 title: 项目主页
 heroImage: /logo.svg
-heroText: wucq-jj的博客
-tagline: wucq-jj的个人博客
+heroText: 晶晶的白水哥
+tagline: 天行健，君子以自强不息
 actions:
   - text: 使用指南 💡
-    link: /zh/demo/
+    link: /demo/
     type: primary
 
   - text: 文档
-    link: /zh/guide/
+    link: /guide/
+
+  - text: 博客
+    link: /demo/BlogHome.md
+    
 
 features:
   - title: Markdown 增强
@@ -99,7 +103,8 @@ features:
     details: 包括图标支持、全屏按钮、返回顶部按钮等
     link: https://theme-hope.vuejs.press/zh/guide/feature/
 copyright: false
-footer: 使用 <a href="https://theme-hope.vuejs.press/" target="_blank">VuePress Theme Hope</a> 主题 | MIT 协议, 版权所有 © 2023-present wucq-jj
+# footer: 使用 <a href="https://theme-hope.vuejs.press/" target="_blank">VuePress Theme Hope</a> 主题 | MIT 协议, 版权所有 © 2023-present wucq-jj
+footer: 版权所有 © 2023 wucq-jj
 ---
 
 这是项目主页的案例。你可以在这里放置你的主体内容。

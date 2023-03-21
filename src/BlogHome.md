@@ -2,9 +2,7 @@
 home: true
 layout: BlogHome
 icon: home
-# bgImage: /222.jpeg
-# bgImage: /logo.png
-bgImage: /background.jpg
+bgImage: /background2.png
 title: 博客主页
 heroImage: /logo.svg
 heroText: 晶晶的白水哥的博客
@@ -31,5 +29,5 @@ projects:
     desc: 自定义详细介绍
     link: https://你的自定义链接
 
-footer: 做好自己的事
+footer: 天行健，君子以自强不息；地势坤，君子以厚德载物
 ---

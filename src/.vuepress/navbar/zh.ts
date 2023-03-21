@@ -23,6 +23,12 @@ export const zhNavbar = navbar([
     ],
   },
   {
+    text: "博文",
+    icon: "note",
+    prefix: "/notes/",
+    link: "/notes/",
+  },
+  {
     text: "V2 文档",
     icon: "note",
     link: "https://theme-hope.vuejs.press/zh/",

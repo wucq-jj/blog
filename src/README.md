@@ -6,15 +6,20 @@ heroImage: /logo.svg
 heroText: 晶晶的白水哥
 tagline: 天行健，君子以自强不息
 actions:
-  - text: 使用指南 💡
-    link: /demo/
-    type: primary
-
-  - text: 文档
-    link: /guide/
+  # - text: 使用指南 💡
+  #   link: /demo/
+  #   type: primary
 
   - text: 博客
-    link: /demo/BlogHome.md
+    link: /BlogHome.md
+    type: primary
+
+  - text: 文档💡
+    link: /guide/
+    
+
+
+  
     
 
 features:

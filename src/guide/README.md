@@ -3,14 +3,23 @@ title: 指南
 icon: creative
 ---
 
-## 功能亮点
+## 文章目录
 
-### Bar
+### C/C++
 
 - [baz](bar/baz.md)
 - ...
 
-### Foo
+### Qt
+
+### Linux
 
 - [ray](foo/ray.md)
 - ...
+
+
+### 面试题整理
+
+- [test](../notes/C_C++InterviewQuestions.md)
+- ...
+

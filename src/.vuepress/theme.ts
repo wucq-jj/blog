@@ -3,21 +3,37 @@ import { enNavbar, zhNavbar } from "./navbar/index.js";
 import { enSidebar, zhSidebar } from "./sidebar/index.js";
 
 export default hopeTheme({
-  hostname: "https://vuepress-theme-hope-docs-demo.netlify.app",
+  hostname: "https://www.wucq-jj-blog.cn",
 
   author: {
-    name: "wucq-jj",
-    url: "https://www.wucq-jj-notes.cn",
+    name: "晶晶的白水哥",
+    url: "https://www.wucq-jj-blog.cn",
   },
 
   iconAssets: "iconfont",
 
   logo: "/logo.svg",
 
-  // repo: "vuepress-theme-hope/vuepress-theme-hope",
   repo: "wucq-jj/blog",
 
   // docsDir: "demo/theme-docs/src",
+
+  themeColor: {
+    blue: "#2196f3",
+    red: "#f26d6d",
+    green: "#3eaf7c",
+    orange: "#fb9b5f",
+  },
+
+  blog: {
+    medias: {
+      Email: "https://1004519221@qq.com",
+      Gitee: "https://gitee.com/wcq-jj/",
+      GitHub: "https://github.com/wucq-jj",
+      QQ: "1004519221",
+    },
+  },
+
 
   locales: {
     // "/": {
@@ -50,10 +66,14 @@ export default hopeTheme({
 
       displayFooter: true,
 
-      // page meta
-      metaLocales: {
-        editLink: "在 GitHub 上编辑此页",
+      blog: {
+        description: "一个扎根网络安全行业的客户端开发者",
+        intro: "/intro.html",
       },
+      // page meta
+      // metaLocales: {
+      //   editLink: "在 GitHub 上编辑此页",
+      // },
     },
   },
 

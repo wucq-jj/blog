@@ -3,12 +3,13 @@ home: true
 layout: BlogHome
 icon: home
 # bgImage: /222.jpeg
-bgImage: /logo.png
+# bgImage: /logo.png
+bgImage: /background.jpg
 title: 博客主页
 heroImage: /logo.svg
-heroText: Memory's blog
+heroText: 晶晶的白水哥的博客
 heroFullScreen: true
-tagline: 不积跬步，无以至千里；不积小流，无以成江海✊
+tagline: 天行健，君子以自强不息
 projects:
   - icon: project
     name: 谷粒商城

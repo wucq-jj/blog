@@ -6,8 +6,8 @@ export default hopeTheme({
   hostname: "https://vuepress-theme-hope-docs-demo.netlify.app",
 
   author: {
-    name: "Mr.Hope",
-    url: "https://mrhope.site",
+    name: "wucq-jj",
+    url: "https://www.wucq-jj-notes.cn",
   },
 
   iconAssets: "iconfont",
@@ -17,7 +17,7 @@ export default hopeTheme({
   // repo: "vuepress-theme-hope/vuepress-theme-hope",
   repo: "wucq-jj/blog",
 
-  docsDir: "demo/theme-docs/src",
+  // docsDir: "demo/theme-docs/src",
 
   locales: {
     // "/": {
@@ -60,7 +60,7 @@ export default hopeTheme({
   encrypt: {
     config: {
       "/demo/encrypt.html": ["1234"],
-      "/zh/demo/encrypt.html": ["1234"],
+      // "/zh/demo/encrypt.html": ["1234"],
     },
   },
 
@@ -69,6 +69,8 @@ export default hopeTheme({
       // @ts-expect-error: You should generate and use your own comment service
       provider: "Waline",
     },
+
+    blog: true,
 
     // all features are enabled for demo, only preserve features you need here
     mdEnhance: {

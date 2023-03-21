@@ -12,7 +12,7 @@ export default defineUserConfig({
     // },
     "/": {
       lang: "zh-CN",
-      title: "文档演示",
+      title: "wucq-jj",
       description: "vuepress-theme-hope 的文档演示",
     },
   },
@@ -22,3 +22,4 @@ export default defineUserConfig({
   // Enable it with pwa
   // shouldPrefetch: false,
 });
+

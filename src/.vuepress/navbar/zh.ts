@@ -24,13 +24,26 @@ export const zhNavbar = navbar([
   },
   {
     text: "博文",
-    icon: "note",
+    icon: "edit",
     prefix: "/notes/",
-    link: "/notes/",
+    children: [
+      {
+        text: "1.C/C++ 知识分享",
+        icon: "edit",
+        link: ""
+        
+      },
+      {
+        text: "2.面试题收集整理",
+        icon: "edit",
+        link: "InterviewQuestion/README.md"
+      },
+      
+    ],
   },
-  {
-    text: "V2 文档",
-    icon: "note",
-    link: "https://theme-hope.vuejs.press/zh/",
-  },
+  // {
+  //   text: "V2 文档",
+  //   icon: "note",
+  //   link: "https://theme-hope.vuejs.press/zh/",
+  // },
 ]);

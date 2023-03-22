@@ -21,7 +21,7 @@ icon: creative
 
 
 ### 面试题整理
-- [C/C++ 面试题整理](InterviewQuestion/C_C++InterviewQuestions.md)
+- [面试题整理](InterviewQuestion/README.md)
 - ...
 
 

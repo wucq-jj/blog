@@ -1,8 +1,11 @@
 ---
 title: 面试题整理
-index: false
+index: true
 comment: false
 icon: edit
+editLink: false
+date: 2023-03-22
+footer: 天行健，君子以自强不息；地势坤，君子以厚德载物
 ---
 
 ## 目录

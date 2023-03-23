@@ -8,15 +8,18 @@ icon: creative
 ## 目录
 
 ### C/C++
+- [C语言和C++分享](CandCpp/README.md)
 - ...
 
 
 ### Qt
+- [Qt 分享](Qt/README.md)
 - ...
 
 
 
 ### Linux 
+- [Linux小知识](Linux/README.md)
 - ...
 
 
@@ -26,10 +29,12 @@ icon: creative
 
 
 ### 刷题
+- [LeetCode 刷题](BrushProblems/README.md)
 - ...
 
 
-### 书籍资料
+### 资源分享
+- [资源分享](Resources/README.md)
 - ...
 
 

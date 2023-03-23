@@ -1,0 +1,16 @@
+---
+title: 刷题
+index: true
+comment: false
+icon: edit
+editLink: false
+date: 2023-03-23
+pageview: true
+Word: true
+footer: 天行健，君子以自强不息；地势坤，君子以厚德载物
+---
+
+## 目录
+以不同的知识点形式进行刷题
+
+

@@ -7,7 +7,7 @@ title: 博客主页
 heroImage: /logo.svg
 heroText: 晶晶的白水哥的博客
 heroFullScreen: true
-tagline: 天行健，君子以自强不息
+tagline: 天行健，君子以自强不息；地势坤，君子以厚德载物
 # projects:
 #   - icon: project
 #     name: 谷粒商城

@@ -10,7 +10,13 @@ Word: true
 footer: 天行健，君子以自强不息；地势坤，君子以厚德载物
 ---
 
+## 出处说明
+- [leetcode](https://leetcode.cn/)
+所有刷题都来自LeetCode
+
 ## 目录
-以不同的知识点形式进行刷题
+- [数据结构题-数组](DataStructure-Array.md)
+
+
 
 

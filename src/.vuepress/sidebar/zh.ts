@@ -9,24 +9,7 @@ export const zhSidebar = sidebar({
       prefix: "intro",
       link: "intro",
       children: "structure",
-    }
-    ,
-    // {
-    //   icon: "discover",
-    //   text: "案例",
-    //   prefix: "demo/",
-    //   link: "demo/",
-    //   collapsible: true, //侧边栏折叠 
-    //   children: "structure",
-    // },
-    // {
-    //   icon: "note",
-    //   text: "文档",
-    //   prefix: "guide/",
-    //   link: "guide/",
-    //   collapsible: true, //侧边栏折叠 
-    //   children: "structure",
-    // },
+    },
     {
       icon: "note",
       text: "博文",
@@ -35,6 +18,49 @@ export const zhSidebar = sidebar({
       collapsible: false, //侧边栏折叠 
       children: 
       [
+        {
+          text: "C/C++知识分享",
+          icon: "note",
+          prefix: "CandCpp/",
+          link: "CandCpp/README.md",
+          collapsible: true,
+          children: 
+          [
+            {
+              text: "C语言分享",
+              icon: "note",
+              link: "C_share.md"
+            },
+            {
+              text: "C++分享",
+              icon: "note",
+              link: "Cpp_share.md"
+            },
+          ],
+        },
+        {
+          text: "Qt",
+          icon: "note",
+          prefix: "Qt/",
+          link: "Qt/README.md",
+          collapsible: true,
+          children: 
+          [
+            {
+              text: "Qt Mp3播放器",
+              icon: "note",
+              link: "Qt_MusicPlayer"
+            },
+          ],
+        },
+        {
+          text: "Linux",
+          icon: "note",
+          prefix: "Linux/",
+          link: "Linux/README.md",
+          collapsible: true,
+          children: "structure",
+        },
         {
           text: "面试题整理",
           icon: "note",
@@ -64,6 +90,22 @@ export const zhSidebar = sidebar({
               link: "Qt_InterviewQuestions"
             },
           ],
+        },
+        {
+          text: "刷题",
+          icon: "note",
+          prefix: "BrushProblems/",
+          link: "BrushProblems/README.md",
+          collapsible: true,
+          children: "structure",
+        },
+        {
+          text: "资源分享",
+          icon: "note",
+          prefix: "Resources/",
+          link: "Resources/README.md",
+          collapsible: true,
+          children: "structure",
         },
       ],
     },

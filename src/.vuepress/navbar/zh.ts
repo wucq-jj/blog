@@ -2,27 +2,7 @@ import { navbar } from "vuepress-theme-hope";
 
 export const zhNavbar = navbar([
   "/",
-  { text: "案例", icon: "discover", link: "/demo/" },
-  {
-    text: "文章",
-    icon: "creative",
-    prefix: "/guide/",
-    children: [
-      {
-        text: "Bar",
-        icon: "creative",
-        prefix: "bar/",
-        children: ["baz", { text: "...", icon: "more", link: "" }],
-      },
-      {
-        text: "Foo",
-        icon: "config",
-        prefix: "foo/",
-        children: ["ray", { text: "...", icon: "more", link: "" }],
-      },
-    ],
-  },
-  {
+    {
     text: "博文",
     icon: "edit",
     prefix: "/notes/",
@@ -30,13 +10,37 @@ export const zhNavbar = navbar([
       {
         text: "1.C/C++ 知识分享",
         icon: "edit",
-        link: ""
+        link: "CandCpp/README.md"
         
       },
       {
-        text: "2.面试题收集整理",
+        text: "2.Qt",
+        icon: "edit",
+        link: "Qt/README.md"
+        
+      },
+      {
+        text: "3.Linux",
+        icon: "edit",
+        link: "Linux/README.md"
+        
+      },
+      {
+        text: "4.面试题收集整理",
         icon: "edit",
         link: "InterviewQuestion/README.md"
+      },
+      {
+        text: "5.刷题",
+        icon: "edit",
+        link: "BrushProblems/README.md"
+        
+      },
+      {
+        text: "5.资源",
+        icon: "edit",
+        link: "Resources/README.md"
+        
       },
       
     ],

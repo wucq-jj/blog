@@ -6,7 +6,7 @@ export default hopeTheme({
   hostname: "https://www.wucq-jj-blog.cn",
 
   author: {
-    name: "晶晶的白水哥",
+    name: "白水晶",
     url: "https://www.wucq-jj-blog.cn",
   },
 

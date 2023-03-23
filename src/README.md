@@ -3,7 +3,7 @@ home: true
 icon: home
 title: 项目主页
 heroImage: /logo.svg
-heroText: 晶晶的白水哥
+heroText: 白水晶
 tagline: 天行健，君子以自强不息
 actions:
   # - text: 使用指南 💡

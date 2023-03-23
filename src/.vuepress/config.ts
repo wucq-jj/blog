@@ -12,8 +12,8 @@ export default defineUserConfig({
     // },
     "/": {
       lang: "zh-CN",
-      title: "wucq-jj",
-      description: "vuepress-theme-hope 的文档演示",
+      title: "白水晶",
+      description: "白水晶的博客文章分享",
     },
   },
 

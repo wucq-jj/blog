@@ -87,8 +87,8 @@ export default hopeTheme({
   plugins: {
     comment: {
       
-      provider: "Waline",
-      serverURL: "https://blog-waline-wucq-jj.vercel.app/",
+      // provider: "Waline",        NOTE: 评论插件暂时取消，待后期 阅读量上来了 可以买个域名 实现该功能
+      // serverURL: "https://blog-waline-wucq-jj.vercel.app/",
     },
 
     blog: true,

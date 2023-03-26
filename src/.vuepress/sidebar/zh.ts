@@ -85,7 +85,7 @@ export const zhSidebar = sidebar({
               link: "Embedded_InterviewQuestions"
             },
             {
-              text: "嵌入式 面试题",
+              text: "Qt 面试题",
               icon: "note",
               link: "Qt_InterviewQuestions"
             },
@@ -97,7 +97,24 @@ export const zhSidebar = sidebar({
           prefix: "BrushProblems/",
           link: "BrushProblems/README.md",
           collapsible: true,
-          children: "structure",
+          children: 
+          [
+            {
+              text: "数组",
+              icon: "note",
+              link: "DataStructure-Array"
+            },
+            {
+              text: "字符串",
+              icon: "note",
+              link: "DataStructure-String"
+            },
+            {
+              text: "链表",
+              icon: "note",
+              link: "DataStructure-Linklist"
+            },
+          ],
         },
         {
           text: "资源分享",

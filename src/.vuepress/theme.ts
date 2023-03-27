@@ -32,25 +32,11 @@ export default hopeTheme({
       GitHub: "https://github.com/wucq-jj",
       QQ: "1004519221",
     },
+    articlePerPage: 15,     // 控制分页文章数目
   },
 
 
   locales: {
-    // "/": {
-    //   // navbar
-    //   navbar: enNavbar,
-
-    //   // sidebar
-    //   sidebar: enSidebar,
-
-    //   footer: "Default footer",
-
-    //   displayFooter: true,
-
-    //   metaLocales: {
-    //     editLink: "Edit this page on GitHub",
-    //   },
-    // },
 
     /**
      * Chinese locale config
@@ -91,7 +77,6 @@ export default hopeTheme({
     },
 
     blog: true,
-
     // all features are enabled for demo, only preserve features you need here
     mdEnhance: {
       align: true,

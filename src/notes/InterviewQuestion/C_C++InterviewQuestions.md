@@ -996,7 +996,7 @@ TCP/IP
     网络接口层（数据链路层）
 ```
 
-![image-20230327212046561](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202303272120710.png)
+<!-- ![](D:\person\题库图片\网络7层模型.png) -->
 
 ### 29.打开一个网页 都经过什么协议
 

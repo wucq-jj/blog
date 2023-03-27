@@ -7,6 +7,7 @@ editLink: false
 date: 2023-03-23
 pageview: true
 Word: true
+# sticky: true    #指定文章 在博客页面
 category:
   - 数据结构-数组
 tag: 

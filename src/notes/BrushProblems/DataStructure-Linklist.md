@@ -89,3 +89,211 @@ public:
 };
 ```
 
+
+
+## 21.合并两个有序链表（简单题）
+
+将两个升序链表合并为一个新的 **升序** 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+
+示例1：
+
+![image-20230327102902611](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202303271029661.png)
+
+```
+输入：l1 = [1,2,4], l2 = [1,3,4]
+输出：[1,1,2,3,4,4]
+```
+
+示例2：
+
+```
+输入：l1 = [], l2 = []
+输出：[]
+```
+
+示例3：
+
+```
+输入：l1 = [], l2 = [0]
+输出：[0]
+```
+
+**提示：**
+
+- 两个链表的节点数目范围是 `[0, 50]`
+- `-100 <= Node.val <= 100`
+- `l1` 和 `l2` 均按 **非递减顺序** 排列
+
+### 题解1（暴力）：
+
+```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        ListNode *head = new ListNode(-1);
+        ListNode *tmp = head;
+
+        while(list1 != nullptr && list2 != nullptr)
+        {
+            if (list1->val < list2->val)
+            {
+                tmp->next = list1;
+                list1 = list1->next;
+            }
+            else
+            {
+                tmp->next = list2;
+                list2 = list2->next;
+            }
+            tmp = tmp->next;
+        }
+        if (list1 == nullptr)
+            tmp->next = list2;
+        else
+            tmp->next = list1;
+
+        // tmp->next = list1 == nullptr ? list2 : list1;
+
+        return head->next;
+    }
+};
+```
+
+### 题解2递归：
+
+```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        if (list1 == nullptr)
+            return list2;
+        if (list2 == nullptr)
+            return list1;
+        
+        if (list1->val <= list2->val)
+        {
+            list1->next = mergeTwoLists(list1->next, list2);
+            return list1;
+        }
+        else
+        {
+            list2->next = mergeTwoLists(list1, list2->next);
+            return list2;
+        }
+    }
+};
+```
+
+## 203.移除链表元素（简单题）
+
+给你一个链表的头节点 `head` 和一个整数 `val` ，请你删除链表中所有满足 `Node.val == val` 的节点，并返回 **新的头节点** 。
+
+示例1：
+
+![image-20230327142205903](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202303271422935.png)
+
+```
+输入：head = [1,2,6,3,4,5,6], val = 6
+输出：[1,2,3,4,5]
+```
+
+示例2：
+
+```
+输入：head = [], val = 1
+输出：[]
+```
+
+示例3：
+
+```
+输入：head = [7,7,7,7], val = 7
+输出：[]
+```
+
+**提示：**
+
+- 列表中的节点数目在范围 `[0, 104]` 内
+- `1 <= Node.val <= 50`
+- `0 <= val <= 50`
+
+### 题解1（暴力）：
+
+```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        ListNode *res = new ListNode(-1, head);
+        ListNode * tmp = res;
+        while(nullptr != tmp->next)
+        {
+            if (val == tmp->next->val)
+            {
+                tmp->next = tmp->next->next;
+                
+            }
+            else
+            {
+                tmp = tmp->next;
+            }
+        }
+        return res->next;
+    }
+};
+```
+
+题解2（递归）：
+
+```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        if (head == nullptr) {
+            return head;
+        }
+        head->next = removeElements(head->next, val);
+        return head->val == val ? head->next : head;
+    }
+};
+```
+

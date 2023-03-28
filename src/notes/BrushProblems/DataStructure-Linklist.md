@@ -297,3 +297,439 @@ public:
 };
 ```
 
+## 206.反转链表（简单题）
+
+给你单链表的头节点 `head` ，请你反转链表，并返回反转后的链表。
+
+示例1：
+
+![image-20230328111004827](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202303281110924.png)
+
+```
+输入：head = [1,2,3,4,5]
+输出：[5,4,3,2,1]
+```
+
+示例2：
+
+![image-20230328111036202](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202303281110234.png)
+
+```
+输入：head = [1,2]
+输出：[2,1]
+```
+
+示例3：
+
+```
+输入：head = []
+输出：[]
+```
+
+**提示：**
+
+- 链表中节点的数目范围是 `[0, 5000]`
+- `-5000 <= Node.val <= 5000`
+
+### 题解1，原地算法：
+
+```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (head == nullptr || head->next == nullptr)
+            return head;
+        ListNode * L = new ListNode(0, head);
+        ListNode * beg = L->next;
+        ListNode * end = L->next->next;
+
+        while(end)
+        {
+            beg->next = end->next;
+            end->next = L->next;
+            L->next = end;
+            end = beg->next;
+        }
+
+        return L->next;
+    }
+};
+```
+
+### 题解2，递归：
+
+```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (head == nullptr || head->next == nullptr)
+            return head;
+        ListNode *newHead = reverseList(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+           /*
+            第一轮出栈，head为5，head.next为空，返回5
+            第二轮出栈，head为4，head.next为5，执行head.next.next=head也就是5.next=4，
+                      把当前节点的子节点的子节点指向当前节点
+                      此时链表为1->2->3->4<->5，由于4与5互相指向，所以此处要断开4.next=null
+                      此时链表为1->2->3->4<-5
+                      返回节点5
+            第三轮出栈，head为3，head.next为4，执行head.next.next=head也就是4.next=3，
+                      此时链表为1->2->3<->4<-5，由于3与4互相指向，所以此处要断开3.next=null
+                      此时链表为1->2->3<-4<-5
+                      返回节点5
+            第四轮出栈，head为2，head.next为3，执行head.next.next=head也就是3.next=2，
+                      此时链表为1->2<->3<-4<-5，由于2与3互相指向，所以此处要断开2.next=null
+                      此时链表为1->2<-3<-4<-5
+                      返回节点5
+            第五轮出栈，head为1，head.next为2，执行head.next.next=head也就是2.next=1，
+                      此时链表为1<->2<-3<-4<-5，由于1与2互相指向，所以此处要断开1.next=null
+                      此时链表为1<-2<-3<-4<-5
+                      返回节点5
+            出栈完成，最终头节点5->4->3->2->1
+         */
+        
+        return newHead;     
+};
+```
+
+### 题解3，枚举：
+
+![img](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202303281352080.gif)
+
+```C++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+		if (head == nullptr || head->next == nullptr)
+            return haed;
+        ListNode * cur = nullptr;
+        ListNode * pre = head;
+        while(cur != nullptr)
+        {
+            ListNode *tmp = pre->next;	//临时保存 pre 的 下一节点
+            pre->next = cur;	// 指向掉头
+            cur = pre;	// cur 移动一个位置
+            pre = tmp;	// pre 移动一个位置
+        }
+        return cur;
+    }
+};
+```
+
+## 83.删除排序链表中的重复元素（简单题）
+
+给定一个已排序的链表的头 `head` ， *删除所有重复的元素，使每个元素只出现一次* 。返回 *已排序的链表* 。
+
+示例1：
+
+![image-20230328145529615](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202303281455651.png)
+
+
+
+```
+输入：head = [1,1,2]
+输出：[1,2]
+```
+
+示例2：
+
+![image-20230328145559080](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202303281455113.png)
+
+```
+输入：head = [1,1,2,3,3]
+输出：[1,2,3]
+```
+
+**提示：**
+
+- 链表中节点数目在范围 `[0, 300]` 内
+- `-100 <= Node.val <= 100`
+- 题目数据保证链表已经按升序 **排列**
+
+### 题解1，两个for循环 暴力破解：
+
+```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if(head == nullptr || head->next == nullptr)
+            return head;
+
+        for (ListNode *index = head; index != nullptr; index = index->next)
+        {
+            for (ListNode * index2 = index->next; index2 != nullptr; index2 = index2->next)
+            {
+                if (index->val == index2->val)
+                {
+                    index->next = index2->next;
+                }
+                else
+                    break;
+            
+            }
+        }
+        return head;
+    }
+};
+```
+
+### 题解2，一层while循环 枚举：
+
+```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        ListNode *ptr = head;
+        while(ptr && ptr->next)
+        {
+            if (ptr->val == ptr->next->val)
+            {
+                ListNode *del = ptr->next;
+                ptr->next = del->next;
+                delete(del);
+            }
+            else
+                ptr = ptr->next;
+        }
+        return head;
+    }
+};
+```
+
+### 题解3，递归：
+
+```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if (head == nullptr || head->next == nullptr)
+            return head;
+        head->next = deleteDuplicates(head->next);
+
+        if (head->val == head->next->val)
+            head->next = head->next->next;
+        return head;
+    }
+};
+```
+
+## 20.有效的括号（简单题）
+
+给定一个只包括 `'('`，`')'`，`'{'`，`'}'`，`'['`，`']'` 的字符串 `s` ，判断字符串是否有效。
+
+有效字符串需满足：
+
+1. 左括号必须用相同类型的右括号闭合。
+2. 左括号必须以正确的顺序闭合。
+3. 每个右括号都有一个对应的相同类型的左括号。
+
+示例1：
+
+```
+输入：s = "()"
+输出：true
+```
+
+示例2：
+
+```
+输入：s = "()[]{}"
+输出：true
+```
+
+示例3：
+
+```
+输入：s = "(]"
+输出：false
+```
+
+**提示：**
+
+- `1 <= s.length <= 104`
+- `s` 仅由括号 `'()[]{}'` 组成
+
+### 题解（栈）：
+
+```c++
+class Solution {
+public:
+    bool isValid(string s) {
+        if (s.length() % 2 == 1)
+            return false;
+        unordered_map<char, char> pair = {
+            {')', '('},
+            {']', '['},
+            {'}', '{'}
+        };
+        stack<char> stack;
+        for (auto index : s)
+        {
+            if (pair.count(index))
+            {
+                if (stack.empty() || stack.top() != pair[index])
+                    return false;
+                stack.pop();
+            }
+            else
+             stack.push(index);
+        }
+
+        return stack.empty();
+    }
+};
+```
+
+## 232.用栈实现队列（简单）
+
+请你仅使用两个栈实现先入先出队列。队列应当支持一般队列支持的所有操作（`push`、`pop`、`peek`、`empty`）：
+
+实现 `MyQueue` 类：
+
+- `void push(int x)` 将元素 `x` 推到队列的末尾
+- `int pop()` 从队列的开头移除并返回元素
+- `int peek() `返回队列开头的元素
+- `boolean empty()` 如果队列为空，返回 `true` ；否则，返回 `false`
+
+**说明**
+
+- 你 **只能** 使用标准的栈操作 —— 也就是只有 `push to top`, `peek/pop from top`, `size`, 和 `is empty` 操作是合法的
+- 你所使用的语言也许不支持栈。你可以使用 `list` 或者 `deque`（双端队列）来模拟一个栈，只要是标准的栈操作即可。
+
+示例1：
+
+```
+输入：
+["MyQueue", "push", "push", "peek", "pop", "empty"]
+[[], [1], [2], [], [], []]
+输出：
+[null, null, null, 1, 1, false]
+
+解释：
+MyQueue myQueue = new MyQueue();
+myQueue.push(1); // queue is: [1]
+myQueue.push(2); // queue is: [1, 2] (leftmost is front of the queue)
+myQueue.peek(); // return 1
+myQueue.pop(); // return 1, queue is [2]
+myQueue.empty(); // return false
+```
+
+**提示**
+
+- `1 <= x <= 9`
+- 最多调用 `100` 次 `push`、`pop`、`peek` 和 `empty`
+- 假设所有操作都是有效的 （例如，一个空的队列不会调用 `pop` 或者 `peek` 操作）
+
+### 题解：
+
+```c++
+class MyQueue {
+    private:
+        stack<int> inStack, outStack;
+        void InToOut()
+        {
+            while (!inStack.empty())
+            {
+                outStack.push(inStack.top());
+                inStack.pop();
+            }
+        }
+public:
+    MyQueue() {
+
+    }
+    
+    void push(int x) {
+        inStack.push(x);
+    }
+    
+    int pop() {
+        if (outStack.empty())
+            InToOut();
+        int x = outStack.top();
+        outStack.pop();
+        return x;
+    }
+    
+    int peek() {
+        if (outStack.empty())
+            InToOut();
+        return outStack.top();
+    }
+    
+    bool empty() {
+        return inStack.empty() && outStack.empty();
+    }
+};
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue* obj = new MyQueue();
+ * obj->push(x);
+ * int param_2 = obj->pop();
+ * int param_3 = obj->peek();
+ * bool param_4 = obj->empty();
+ */
+```
+

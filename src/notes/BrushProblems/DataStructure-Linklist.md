@@ -733,3 +733,296 @@ public:
  */
 ```
 
+## 144.二叉树前序遍历（简单题）
+
+给你二叉树的根节点 `root` ，返回它节点值的 **前序** 遍历
+
+**示例1**
+
+![image-20230329151523691](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202303291515833.png)
+
+```
+输入：root = [1,null,2,3]
+输出：[1,2,3]
+```
+
+**示例2**
+
+```
+输入：root = []
+输出：[]
+```
+
+**示例3**
+
+```
+输入：root = [1]
+输出：[1]
+```
+
+**示例4**
+
+![image-20230329152040535](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202303291520577.png)
+
+```
+输入：root = [1,2]
+输出：[1,2]
+```
+
+**示例5**
+
+```
+输入：root = [1,null,2]
+输出：[1,2]
+```
+
+**提示：**
+
+- 树中节点数目在范围 `[0, 100]` 内
+- `-100 <= Node.val <= 100`
+
+### 题解1，递归：
+
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    void func(TreeNode * root, vector<int> &res)
+    {
+        if (root == nullptr)
+            return ;
+        res.push_back(root->val);
+        func(root->left, res);
+        func(root->right, res);
+    }
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> res;
+        func(root, res);
+        return res;
+    }
+};
+```
+
+### 题解2，暴力迭代：
+
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+       	vector<int> res;
+        if (root == nullptr)
+            return res;
+        stack<TreeNode* root> stk;
+        TreeNode* node = root;
+        while (! stk.empty() || node != nullptr)
+        {
+            while(node != nullptr)
+            {
+                res.push_back(node->val);
+                stk.push(node);
+                node = node->left;
+            }
+            node = stk.top();
+            stk.pop();
+            node = node->right;
+        }
+        return res;
+    }
+};
+```
+
+## 94.二叉树中序遍历（简单题）
+
+给定一个二叉树的根节点 `root` ，返回 *它的 **中序** 遍历* 。
+
+**示例1**：
+
+![image-20230329170944210](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202303291709250.png)
+
+```
+输入：root = [1,null,2,3]
+输出：[1,3,2]
+```
+
+**示例2：**
+
+```
+输入：root = []
+输出：[]
+```
+
+**示例3：**
+
+```
+输入：root = [1]
+输出：[1]
+```
+
+**提示：**
+
+- 树中节点数目在范围 `[0, 100]` 内
+- `-100 <= Node.val <= 100`
+
+### 题解1，递归：
+
+```C++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    void func(TreeNode * root, vector<int> &res)
+    {
+        if (root == nullptr)
+            return ;
+        func(root->left, res);
+        res.push_back(root->val);
+        func(root->right, res);
+    }
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> res;
+        func(root, res);
+        return res;
+    }
+};
+```
+
+### 题解2，迭代：
+
+```C++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> res;
+        if (root == nullptr)
+            return res;
+        stack<TreeNode * > stk;
+        TreeNode * node = root;
+        while(! stk.empty() || node != nullptr)
+        {
+            while(node != nullptr)
+            {
+                stk.push(node);
+                node = node->left;
+            }
+            node = stk.top();
+            stk.pop();
+            res.push_back(node->val);
+            node = node->right;
+        }
+        return res;
+    }
+};
+```
+
+## 145.二叉树后续遍历（简单题）
+
+给你一棵二叉树的根节点 `root` ，返回其节点值的 **后序遍历** 。
+
+**示例1：**
+
+![image-20230329172223202](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202303291722241.png)
+
+```
+输入：root = [1,null,2,3]
+输出：[3,2,1]
+```
+
+**示例2：**
+
+```
+输入：root = []
+输出：[]
+```
+
+**示例3：**
+
+```
+输入：root = [1]
+输出：[1]
+```
+
+**提示：**
+
+- 树中节点的数目在范围 `[0, 100]` 内
+- `-100 <= Node.val <= 100`
+
+### 题解1，递归：
+
+```C++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+    void func(TreeNode* root, vector<int> & res)
+    {
+        if (root == nullptr)
+            return ;
+        func(root->left, res);
+        func(root->right, res);
+        res.push_back(root->val);
+    }
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> res;
+        func(root, res);
+        return res;
+    }
+};
+```
+
+### 题解2，迭代：
+
+```
+```
+
+
+

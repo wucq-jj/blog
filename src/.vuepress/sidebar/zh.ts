@@ -27,14 +27,9 @@ export const zhSidebar = sidebar({
           children: 
           [
             {
-              text: "C语言分享",
+              text: "数据结构",
               icon: "note",
-              link: "C_share.md"
-            },
-            {
-              text: "C++分享",
-              icon: "note",
-              link: "Cpp_share.md"
+              link: "Share.md"
             },
           ],
         },
@@ -110,9 +105,9 @@ export const zhSidebar = sidebar({
               link: "DataStructure-String"
             },
             {
-              text: "链表",
+              text: "数据结构",
               icon: "note",
-              link: "DataStructure-Linklist"
+              link: "DataStructure-DataStructure"
             },
           ],
         },

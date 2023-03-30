@@ -17,7 +17,7 @@ footer: 天行健，君子以自强不息；地势坤，君子以厚德载物
 ## 目录
 - [数据结构题-数组](DataStructure-Array.md)
 - [数据结构题-字符串](DataStructure-String.md)
-- [数据结构题-链表](DataStructure-Linklist.md)
+- [数据结构题-数据结构](DataStructure-DataStructure.md)
 
 
 

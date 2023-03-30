@@ -1,5 +1,5 @@
 ---
-title: 链表
+title: 数据结构刷题
 index: true
 comment: false
 icon: edit
@@ -8,7 +8,7 @@ date: 2023-03-26
 pageview: true
 Word: true
 category:
-  - 数据结构-链表
+  - 数据结构
 tag: 
   - LeetCode
 footer: 天行健，君子以自强不息；地势坤，君子以厚德载物
@@ -1021,7 +1021,51 @@ public:
 
 ### 题解2，迭代：
 
-```
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> res;
+        if (root == nullptr)
+            return res;
+        stack<TreeNode *> stk;
+        TreeNode *node = root;
+        TreeNode *prev = nullptr;
+        while(!stk.empty() || node != nullptr)
+        {
+            while (node != nullptr)
+            {
+                stk.push(node);
+                node = node->left;                            
+            }
+            node = stk.top();
+            stk.pop();
+            if (node->right == nullptr || node->right == prev)
+            {
+                res.push_back(node->val);	
+                prev = node;
+                node = nullptr;	//置空防止死循环，且下一次的节点会在栈顶取得
+            }
+            else
+            {
+                stk.push(node);
+                node = node->right;
+            }
+        }
+        return res;
+    }
+};
 ```
 
 

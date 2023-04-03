@@ -1072,7 +1072,7 @@ public:
 
 给你二叉树的根节点 `root` ，返回其节点值的 **层序遍历** 。 （即逐层地，从左到右访问所有节点）。
 
-### 示例1：
+**示例1：**
 
 ![image-20230331222847378](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202303312228493.png)
 
@@ -1081,14 +1081,14 @@ public:
 输出：[[3],[9,20],[15,7]]
 ```
 
-### 示例2:
+**示例2:**
 
 ```
 输入：root = [1]
 输出：[[1]]
 ```
 
-### 示例3：
+**示例3：**
 
 ```
 输入：root = []
@@ -1100,7 +1100,7 @@ public:
 - 树中节点数目在范围 `[0, 2000]` 内
 - `-1000 <= Node.val <= 1000`
 
-### 题解1，迭代：
+### 题解1，迭代,BFS：
 
 ```c++
 /**
@@ -1141,6 +1141,251 @@ public:
             res.push_back(level);
         }
         return res;
+    }
+};
+```
+
+## 104.二叉树的最大深度（简单题）
+
+给定一个二叉树，找出其最大深度。
+
+二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
+
+**说明:** 叶子节点是指没有子节点的节点。
+
+**示例：**
+给定二叉树 `[3,9,20,null,null,15,7]`，
+
+```
+    3
+   / \
+  9  20
+    /  \
+   15   7
+```
+
+返回它的最大深度 3 。
+
+### 题解1,递归：
+
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        if (nullptr == root)
+            return 0;
+        return max(maxDepth(root->left), maxDepth(root->right)) + 1;
+    }
+};
+```
+
+### 题解2，深度优先搜索：
+
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+     int res = 0;
+     if (nullptr == root)
+        return res;
+    
+    stack<TreeNode *> nodeStk;
+    stack<int> depStk;
+    nodeStk.push(root);
+    depStk.push(1);
+    while(! nodeStk.empty())
+    {
+        TreeNode *node = nodeStk.top();
+        nodeStk.pop();
+        int level = depStk.top();
+        depStk.pop();
+        res = max(res, level);
+        if (node->left)
+        {
+            nodeStk.push(node->left);
+            depStk.push(level + 1);
+        }
+        if (node->right)
+        {
+            nodeStk.push(node->right);
+            depStk.push(level + 1);
+        }
+    }
+    return res;
+    }
+};
+```
+
+### 题解3，广度优先搜索：
+
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        int res = 0;
+        if (nullptr == root)
+            return res;
+        queue<TreeNode *> que;
+        que.push(root);
+        while(! que.empty())
+        {
+            int size = que.size();
+            res++;
+            while (size-- > 0)
+            {
+                TreeNode *node = que.front();
+                que.pop();
+                if (node->left)
+                    que.push(node->left);
+                if (node->right)
+                    que.push(node->right);
+            }            
+        }
+        return res;
+    }
+};
+```
+
+
+
+## 101.对称二叉树（简单题）
+
+给你一个二叉树的根节点 `root` ， 检查它是否轴对称。
+
+**示例 1：**
+
+![image-20230403150849269](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202304031508369.png)
+
+```
+输入：root = [1,2,2,3,4,4,3]
+输出：true
+```
+
+**示例 2：**
+
+![image-20230403150919639](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202304031509691.png)
+
+```
+输入：root = [1,2,2,null,3,null,3]
+输出：false
+```
+
+**提示：**
+
+- 树中节点数目在范围 `[1, 1000]` 内
+- `-100 <= Node.val <= 100`
+
+### 题解1，迭代,BFS：
+
+ ```c++
+ /**
+  * Definition for a binary tree node.
+  * struct TreeNode {
+  *     int val;
+  *     TreeNode *left;
+  *     TreeNode *right;
+  *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+  * };
+  */
+ class Solution {
+ public:
+     bool isSymmetric(TreeNode* root) {
+         queue<TreeNode *> que;
+ 
+         que.push(root->left);
+         que.push(root->right);
+         while(! que.empty())
+         {
+             TreeNode * left = que.front();
+             que.pop();
+             TreeNode * right = que.front();
+             que.pop();
+ 
+             if (left == nullptr && right == nullptr)
+                 continue;
+             if (left == nullptr || right == nullptr)
+                 return false;
+             if (left->val != right->val)
+                 return false;
+             
+             que.push(left->left);
+             que.push(right->right);
+ 
+             que.push(left->right);
+             que.push(right->left);
+         }
+         return true;
+     }
+ };
+ ```
+
+### 题解2，递归：
+
+```C++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+
+public:
+    bool isSymmetric(TreeNode* root) {
+        return func(root->left, root->right);
+    }
+private:
+    bool func(TreeNode *left, TreeNode *right)
+    {
+        if (left == nullptr && right == nullptr)
+            return true;
+        if (left == nullptr || right == nullptr)
+            return false;
+        
+        if (left->val != right->val)
+            return false;
+        
+        return func(left->left,right->right) && func(left->right, right->left);
     }
 };
 ```

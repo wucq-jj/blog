@@ -14,6 +14,7 @@ tag:
 footer: 天行健，君子以自强不息；地势坤，君子以厚德载物
 
 
+
 ---
 
 141.环形链表（简单题）
@@ -813,7 +814,7 @@ public:
 };
 ```
 
-### 题解2，暴力迭代：
+### 题解2，迭代：
 
 ```c++
 /**
@@ -1311,47 +1312,47 @@ public:
 ### 题解1，迭代,BFS：
 
  ```c++
- /**
-  * Definition for a binary tree node.
-  * struct TreeNode {
-  *     int val;
-  *     TreeNode *left;
-  *     TreeNode *right;
-  *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-  *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-  * };
-  */
- class Solution {
- public:
-     bool isSymmetric(TreeNode* root) {
-         queue<TreeNode *> que;
- 
-         que.push(root->left);
-         que.push(root->right);
-         while(! que.empty())
-         {
-             TreeNode * left = que.front();
-             que.pop();
-             TreeNode * right = que.front();
-             que.pop();
- 
-             if (left == nullptr && right == nullptr)
-                 continue;
-             if (left == nullptr || right == nullptr)
-                 return false;
-             if (left->val != right->val)
-                 return false;
-             
-             que.push(left->left);
-             que.push(right->right);
- 
-             que.push(left->right);
-             que.push(right->left);
-         }
-         return true;
-     }
- };
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        queue<TreeNode *> que;
+
+        que.push(root->left);
+        que.push(root->right);
+        while(! que.empty())
+        {
+            TreeNode * left = que.front();
+            que.pop();
+            TreeNode * right = que.front();
+            que.pop();
+
+            if (left == nullptr && right == nullptr)
+                continue;
+            if (left == nullptr || right == nullptr)
+                return false;
+            if (left->val != right->val)
+                return false;
+            
+            que.push(left->left);
+            que.push(right->right);
+
+            que.push(left->right);
+            que.push(right->left);
+        }
+        return true;
+    }
+};
  ```
 
 ### 题解2，递归：
@@ -1386,6 +1387,348 @@ private:
             return false;
         
         return func(left->left,right->right) && func(left->right, right->left);
+    }
+};
+```
+
+## 226.翻转二叉树（简单题）
+
+给你一棵二叉树的根节点 `root` ，翻转这棵二叉树，并返回其根节点。
+
+**示例 1：**
+
+![image-20230404134443589](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202304041344712.png)
+
+```
+输入：root = [4,2,7,1,3,6,9]
+输出：[4,7,2,9,6,3,1]
+```
+
+**示例 2：**
+
+![image-20230404134459909](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202304041345790.png)
+
+```
+输入：root = [2,1,3]
+输出：[2,3,1]
+```
+
+**示例 3：**
+
+```
+输入：root = []
+输出：[]
+```
+
+**提示：**
+
+- 树中节点数目范围在 `[0, 100]` 内
+- `-100 <= Node.val <= 100`
+
+### 题解1,迭代，BFS：
+
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        if (nullptr == root)
+            return nullptr;
+        queue<TreeNode *> que;
+        que.push(root);
+        while(!que.empty())
+        {
+            int size = que.size();
+            for (int i = 0; i < size; i++)
+            {
+                TreeNode *node = que.front();
+                que.pop();
+
+                swap(node->left, node->right);
+                if (node->left)
+                    que.push(node->left);
+                if (node->right)
+                    que.push(node->right);
+            }
+        }
+        return root;
+    }
+};
+```
+
+### 题解2，迭代，DFS：
+
+```C++
+* Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        if (nullptr == root)
+            return nullptr;
+        stack<TreeNode *> stk;
+        stk.push(root);
+
+        while(!stk.empty())
+        {
+            TreeNode * node = stk.top();
+            stk.pop();
+            swap(node->left, node->right);
+            if (node->left)
+                stk.push(node->left);
+            if (node->right)
+                stk.push(node->right);
+        }
+        return root;
+    }
+};
+```
+
+### 题解3，递归：
+
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        if (nullptr == root)
+            return nullptr;
+        swap(root->left, root->right);
+        invertTree(root->left);
+        invertTree(root->right);
+        return root;
+    }
+};
+```
+
+## 112.路径总和（简单题）
+
+给你二叉树的根节点 `root` 和一个表示目标和的整数 `targetSum` 。判断该树中是否存在 **根节点到叶子节点** 的路径，这条路径上所有节点值相加等于目标和 `targetSum` 。如果存在，返回 `true` ；否则，返回 `false` 。
+
+**叶子节点** 是指没有子节点的节点。
+
+**示例 1：**
+
+![image-20230404142244884](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202304041422939.png)
+
+```
+输入：root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22
+输出：true
+解释：等于目标和的根节点到叶节点路径如上图所示。
+```
+
+**示例 2：**
+
+![image-20230404142311909](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202304041423777.png)
+
+```
+输入：root = [1,2,3], targetSum = 5
+输出：false
+解释：树中存在两条根节点到叶子节点的路径：
+(1 --> 2): 和为 3
+(1 --> 3): 和为 4
+不存在 sum = 5 的根节点到叶子节点的路径。
+```
+
+**示例 3：**
+
+```
+输入：root = [], targetSum = 0
+输出：false
+解释：由于树是空的，所以不存在根节点到叶子节点的路径。
+```
+
+**提示：**
+
+- 树中节点的数目在范围 `[0, 5000]` 内
+- `-1000 <= Node.val <= 1000`
+- `-1000 <= targetSum <= 1000`
+
+### 题解1,递归：
+
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        if (!root)
+            return false;
+        if (!root->left && !root->right && targetSum == root->val)
+            return true;
+
+        return hasPathSum(root->left, targetSum - root->val) || hasPathSum(root->right, targetSum - root->val);
+    }
+};
+```
+
+### 题解2，BFS：
+
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        if (nullptr == root)
+            return false;
+        queue<TreeNode *> queNode;
+        queue<int> queRes;
+        queNode.push(root);
+        queRes.push(root->val);
+        while(!queNode.empty())
+        {
+            TreeNode *node = queNode.front();
+            queNode.pop();
+            int tmp = queRes.front();
+            queRes.pop();
+
+            if (tmp == targetSum && nullptr == node->left && nullptr == node->right)
+                return true;
+            if (node->left)
+            {
+                queNode.push(node->left);
+                queRes.push(node->left->val + tmp);
+            }
+            if (node->right)
+            {
+                queNode.push(node->right);
+                queRes.push(node->right->val + tmp);
+            }
+        }
+
+        return false;
+    }
+};
+```
+
+## 700.二叉搜索树中的搜索（简单题）
+
+给定二叉搜索树（BST）的根节点 `root` 和一个整数值 `val`。
+
+你需要在 BST 中找到节点值等于`val`的节点。 返回以该节点为根的子树。 如果节点不存在，则返回`null` 。
+
+**示例1：**
+
+![image-20230404161401288](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202304041614336.png)
+
+```
+输入：root = [4,2,7,1,3], val = 2
+输出：[2,1,3]
+```
+
+**示例2：**
+
+![image-20230404161428628](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202304041614707.png)
+
+```
+输入：root = [4,2,7,1,3], val = 5
+输出：[]
+```
+
+**提示：**
+
+- 数中节点数在 `[1, 5000]` 范围内
+- `1 <= Node.val <= 107`
+- `root` 是二叉搜索树
+- `1 <= val <= 107`
+
+### 题解1，迭代：
+
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* searchBST(TreeNode* root, int val) {
+        while(root)
+        {
+            if (root->val == val)
+                return root;
+            root = root->val > val ? root->left : root->right;
+        }
+        return nullptr;
+    }
+};
+```
+
+### 题解2，递归：
+
+```
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* searchBST(TreeNode* root, int val) {
+        if (nullptr == root)
+            return nullptr;
+        if (root->val == val)
+            return  root;
+        return searchBST(root->val > val ? root->left : root->right, val);
     }
 };
 ```

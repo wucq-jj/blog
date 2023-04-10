@@ -1733,3 +1733,154 @@ public:
 };
 ```
 
+## 701. 二叉搜索树中的插入操作（中等题）
+
+给定二叉搜索树（BST）的根节点 `root` 和要插入树中的值 `value` ，将值插入二叉搜索树。 返回插入后二叉搜索树的根节点。 输入数据 **保证** ，新值和原始二叉搜索树中的任意节点值都不同。
+
+**注意**，可能存在多种有效的插入方式，只要树在插入后仍保持为二叉搜索树即可。 你可以返回 **任意有效的结果** 。
+
+**示例1：**
+
+![image-20230410151055882](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202304101511016.png)
+
+```
+输入：root = [4,2,7,1,3], val = 5
+输出：[4,2,7,1,3,5]
+解释：另一个满足题目要求可以通过的树是：
+
+```
+
+![image-20230410151751701](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202304101517752.png)
+
+**示例 2：**
+
+```
+输入：root = [40,20,60,10,30,50,70], val = 25
+输出：[40,20,60,10,30,50,70,null,null,25]
+
+```
+
+**示例 3：**
+
+```
+输入：root = [4,2,7,1,3,null,null,null,null,null,null], val = 5
+输出：[4,2,7,1,3,5]
+```
+
+### 题解1,迭代：
+
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+        if (!root)
+        {
+              return new TreeNode(val);
+        }
+          
+        TreeNode *index = new TreeNode(val);
+        TreeNode *node = root;
+        while (node)
+        {
+            if (node->val > val)
+            {
+                if (nullptr == node->left)
+                {
+                    node->left = index;
+                    break;
+                }
+                else
+                    node = node->left;
+            }
+            else
+            {
+                if (nullptr == node->right)
+                {
+                    node->right = index;
+                    break;
+                }
+                else
+                    node = node->right;
+            }
+        }
+        return root;
+    }
+};
+```
+
+### 题解2，递归：
+
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+        if (nullptr == root)
+            return new TreeNode(val);
+        if (root->val < val)
+            root->right = insertIntoBST(root->right, val);
+        else
+            root->left = insertIntoBST(root->left, val);
+        return root;
+    }
+};
+```
+
+## 98.验证二叉搜索树（中等题）
+
+给你一个二叉树的根节点 `root` ，判断其是否是一个有效的二叉搜索树。
+
+**有效** 二叉搜索树定义如下：
+
+- 节点的左子树只包含 **小于** 当前节点的数。
+- 节点的右子树只包含 **大于** 当前节点的数。
+- 所有左子树和右子树自身必须也是二叉搜索树。
+
+**示例 1：**
+
+![image-20230410153427546](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202304101534603.png)
+
+```
+输入：root = [2,1,3]
+输出：true
+```
+
+![image-20230410153458736](https://wucq-jj-blog-resources.oss-cn-hangzhou.aliyuncs.com/blog-img/202304101534788.png)
+
+```
+输入：root = [5,1,4,null,null,3,6]
+输出：false
+解释：根节点的值是 5 ，但是右子节点的值是 4 。
+```
+
+**提示：**
+
+- 树中节点数目范围在`[1, 104]` 内
+- `-231 <= Node.val <= 231 - 1`
+
+### 题解1：
+
+```
+```
+

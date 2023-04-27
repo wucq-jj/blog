@@ -1,5 +1,5 @@
 ---
-title: Windows
+title: git
 index: true
 comment: false
 icon: edit
@@ -12,12 +12,11 @@ footer: 天行健，君子以自强不息；地势坤，君子以厚德载物
 
 ## 目录
 
-### Windows 知识
+### git 知识
 - ...
 
 
-### Windows 文件操作
-- [递归读取文件夹](RecursiveReadFolder.md)
-- [注册表读写](Registry.md)
-- [windows服务](WinService.md)
+### git 
+- [GIT 初始化用户配置SSH秘钥](InitUserConfigurationAndSHHKey.md)
+- [github 推送失败 fatal: User canceled device code authentication](GitProblem.md)
 - ...

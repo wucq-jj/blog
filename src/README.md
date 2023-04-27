@@ -47,6 +47,11 @@ features:
     icon: windows
     details: Windows 分享
     link: https://www.wucq-jj-blog.cn/notes/Windows/
+  
+  - title: git
+    icon: git
+    details: git 分享
+    link: https://www.wucq-jj-blog.cn/notes/git/
 
   - title: 刷题整理
     icon: people

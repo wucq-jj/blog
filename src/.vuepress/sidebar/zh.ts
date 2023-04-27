@@ -117,7 +117,46 @@ export const zhSidebar = sidebar({
           prefix: "Windows/",
           link: "Windows/README.md",
           collapsible: true,
-          children: "structure",
+          children: 
+          [
+            {
+              text: "递归读取文件夹",
+              icon: "note",
+              link: "RecursiveReadFolder"
+            },
+            {
+              text: "注册表读写",
+              icon: "note",
+              link: "Registry"
+            },//WinService
+            {
+              text: "Windows服务",
+              icon: "note",
+              link: "WinService"
+            },
+          ]
+          ,
+        },
+        {
+          text: "git",
+          icon: "note",
+          prefix: "git/",
+          link: "git/README.md",
+          collapsible: true,
+          children: 
+          [
+            {
+              text: "github推送失败fatal: User canceled device code authentication",
+              icon: "note",
+              link: "GitProblem"
+            },
+            {
+              text: "git初始化用户配置SSH秘钥",
+              icon: "note",
+              link: "InitUserConfigurationAndSHHKey"
+            },
+          ]
+          ,
         },
         {
           text: "资源分享",

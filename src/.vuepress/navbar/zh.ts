@@ -41,7 +41,12 @@ export const zhNavbar = navbar([
         link: "Windows/README.md"
       },
       {
-        text: "7.资源",
+        text: "7.git",
+        icon: "edit",
+        link: "git/README.md"
+      },
+      {
+        text: "8.资源",
         icon: "edit",
         link: "Resources/README.md"
         

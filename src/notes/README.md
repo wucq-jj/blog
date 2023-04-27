@@ -23,6 +23,16 @@ icon: creative
 - ...
 
 
+### Windows 
+- [Windows小知识](Windows/README.md)
+- ...
+
+### git 
+- [git小知识](git/README.md)
+- ...
+
+
+
 ### 面试题整理
 - [面试题整理](InterviewQuestion/README.md)
 - ...

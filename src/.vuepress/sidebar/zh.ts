@@ -112,6 +112,14 @@ export const zhSidebar = sidebar({
           ],
         },
         {
+          text: "Windows",
+          icon: "note",
+          prefix: "Windows/",
+          link: "Windows/README.md",
+          collapsible: true,
+          children: "structure",
+        },
+        {
           text: "资源分享",
           icon: "note",
           prefix: "Resources/",

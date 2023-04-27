@@ -43,6 +43,11 @@ features:
     details: Linux 分享
     link: https://www.wucq-jj-blog.cn/notes/Linux/
 
+  - title: Windows
+    icon: windows
+    details: Windows 分享
+    link: https://www.wucq-jj-blog.cn/notes/Windows/
+
   - title: 刷题整理
     icon: people
     details: leetcode 刷题整理

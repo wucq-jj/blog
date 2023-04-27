@@ -23,7 +23,6 @@ export const zhNavbar = navbar([
         text: "3.Linux",
         icon: "edit",
         link: "Linux/README.md"
-        
       },
       {
         text: "4.面试题收集整理",
@@ -37,7 +36,12 @@ export const zhNavbar = navbar([
         
       },
       {
-        text: "5.资源",
+        text: "6.Windows",
+        icon: "edit",
+        link: "Windows/README.md"
+      },
+      {
+        text: "7.资源",
         icon: "edit",
         link: "Resources/README.md"
         

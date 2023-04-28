@@ -134,6 +134,16 @@ export const zhSidebar = sidebar({
               icon: "note",
               link: "WinService"
             },
+            {
+              text: "Windows 事件 Event",
+              icon: "note",
+              link: "WinEvent"
+            },
+            {
+              text: "Windows 共享内存",
+              icon: "note",
+              link: "WinShareMemory"
+            },
           ]
           ,
         },

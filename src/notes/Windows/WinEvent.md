@@ -27,3 +27,39 @@ HANDLE WINAPI CreateEvent(
 
 如果该事件对象已经存在，那么`CreateEvent()`会返回该内核对象的句柄，并通过系统返回错误`ERROR_ALREADY_EXISTS`，通过`GetLastError（）`获得。
 
+## 打开时间`OpenEvent()`
+
+```c
+HANDLE WINAPI OpenEvent(
+  _In_  DWORD dwDesiredAccess,
+  _In_  BOOL bInheritHandle,
+  _In_  LPCTSTR lpName
+);
+```
+
+`dwDesiredAccess`:制定想要访问的权限，`EVENT_ALL_ACCESS`请求对实践对象完全访问，`EVENT_MODIFY_STATE` 允许`SetEvent()`,`ResetEvent()`,和`PulseEvent()`函数；
+
+`bInheritHandle`：是否希望子进程继承事件对象的句柄，一般设置为false；
+
+`lpName`：要打开的事件对象的名称；
+
+其他进程中的线程可以通过`OpenEvent`或`CreateEvent`访问已经存在的事件内核对象。和其他内核对象的访问一样。
+
+## 等待函数`WaitForSingleObject()`
+
+```c
+DWORD WINAPI WaitForSingleObject(
+  _In_  HANDLE hHandle,
+  _In_  DWORD dwMilliseconds
+);
+```
+
+`hHandle`:指向内核对象的句柄
+
+`dwMilliseconds`：线程最大等待多长时间，直到该对象被触发。经常使用INFINITE，表示阻塞等待。
+
+`WaitForSingleObject`被称呼为等待函数，是等待内核对象被触发通用的等待函数，被用在所有的内核对象触发等待中。当事件对象处于未触发状态，等待函数会被阻塞。当处于触发状态时，等待函数会被系统调用，成功返回。当等待函数返回后，该事件对象的状态是被重置为未触发状态还是仍然处于触发状态，由该事件对象是自动重置还是手动重置事件决定。当该事件对象时自动重置事件，等待函数返回时，该事件会变成未触发状态，如果为手动重置事件，那么等待函数返回后，该事件仍然处于触发状态，直到调用`ResetEvent`函数，使该事件变成未触发状态。
+
+
+
+

@@ -144,6 +144,11 @@ export const zhSidebar = sidebar({
               icon: "note",
               link: "WinShareMemory"
             },
+            {
+              text: "Windows 网络编程",
+              icon: "note",
+              link: "WinSock"
+            },
           ]
           ,
         },

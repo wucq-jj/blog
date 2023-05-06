@@ -4,7 +4,7 @@ index: true
 comment: false
 icon: edit
 editLink: false
-date: 2023-04-27
+date: 2023-05-06
 pageview: true
 Word: true
 footer: 天行健，君子以自强不息；地势坤，君子以厚德载物
@@ -23,4 +23,6 @@ footer: 天行健，君子以自强不息；地势坤，君子以厚德载物
 - [windows事件 Event](WinEvent.md)
 - [windows进程通讯 共享内存](WinShareMemory.md)
 - [windows网络编程 socket](WinSock.md)
+- [GetLastError()的错误码](GetLastErrorCode.md)
+- [TCP连接表获取(模拟netstat -ano)](GetTCPTable.md)
 - ...

@@ -42,6 +42,11 @@ export const zhSidebar = sidebar({
           children: 
           [
             {
+              text: "QTableWidget",
+              icon: "note",
+              link: "QTableWidget"
+            },
+            {
               text: "Qt Mp3播放器",
               icon: "note",
               link: "Qt_MusicPlayer"
@@ -149,6 +154,16 @@ export const zhSidebar = sidebar({
               icon: "note",
               link: "WinSock"
             },
+            {
+              text: "GetLastError() 错误码",
+              icon: "note",
+              link: "GetLastErrorCode"
+            },//TCP连接表获取(模拟netstat -ano)
+            {
+              text: "TCP连接表获取(模拟netstat -ano)",
+              icon: "note",
+              link: "GetTCPTable"
+            },//TCP连接表获取(模拟netstat -ano)
           ]
           ,
         },

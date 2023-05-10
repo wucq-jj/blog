@@ -51,6 +51,11 @@ export const zhSidebar = sidebar({
               icon: "note",
               link: "Qt_MusicPlayer"
             },
+            {
+              text: "Qt 好用的自定义工具函数",
+              icon: "note",
+              link: "QTool"
+            },
           ],
         },
         {

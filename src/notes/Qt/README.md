@@ -12,7 +12,7 @@ footer: 天行健，君子以自强不息；地势坤，君子以厚德载物
 
 ## 目录
 - [QTableWidget控件](QTableWidget.md)
-
+- [QT好用的自定义工具函数](QTool.md)
 
 ### Qt 小demo (娱乐参考)
 - [Qt_Mp3播放器](Qt_MusicPlayer.md)

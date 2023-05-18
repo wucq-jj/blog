@@ -163,12 +163,27 @@ export const zhSidebar = sidebar({
               text: "GetLastError() 错误码",
               icon: "note",
               link: "GetLastErrorCode"
-            },//TCP连接表获取(模拟netstat -ano)
+            },
             {
               text: "TCP连接表获取(模拟netstat -ano)",
               icon: "note",
               link: "GetTCPTable"
-            },//TCP连接表获取(模拟netstat -ano)
+            },
+            {
+              text: "Windows 监控指定目录文件变化，支持模糊匹配",
+              icon: "note",
+              link: "WinMonitorFile"
+            },
+            {
+              text: "Windows 监控指定注册表键值变化",
+              icon: "note",
+              link: "WinMonitorRegistry"
+            },
+            {
+              text: "Windows 监控进程状态",
+              icon: "note",
+              link: "WinMonitorProcess"
+            },
           ]
           ,
         },

@@ -128,7 +128,12 @@ export const zhSidebar = sidebar({
           link: "Windows/README.md",
           collapsible: true,
           children: 
-          [
+          [ //WinCommandHelp
+            {
+            text: "Windows命令",
+            icon: "note",
+            link: "WinCommandHelp"
+            } ,
             {
               text: "递归读取文件夹",
               icon: "note",

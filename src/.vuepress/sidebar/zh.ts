@@ -64,7 +64,14 @@ export const zhSidebar = sidebar({
           prefix: "Linux/",
           link: "Linux/README.md",
           collapsible: true,
-          children: "structure",
+          children:
+          [
+            {
+              text: "Linux命令",
+              icon: "note",
+              link: "linuxCommand.md"
+            },
+          ],
         },
         {
           text: "面试题整理",

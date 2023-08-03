@@ -71,6 +71,11 @@ export const zhSidebar = sidebar({
               icon: "note",
               link: "linuxCommand.md"
             },
+            {
+              text: "vimrc 配置",
+              icon: "note",
+              link: "vimrc.md"
+            },
           ],
         },
         {
